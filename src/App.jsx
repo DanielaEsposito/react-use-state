@@ -24,7 +24,6 @@ function App() {
                 <Button
                   key={index}
                   language={language}
-                  title={language.title}
                   onSelect={handleSelectLanguage}
                 />
               ))}
