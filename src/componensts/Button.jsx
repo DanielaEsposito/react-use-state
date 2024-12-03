@@ -1,7 +1,11 @@
-export default function Button({ title, id }) {
+export default function Button({ language, onSelect }) {
   return (
-    <button key={id} className="btn btn-primary">
-      {title}
+    <button
+      key={language.id}
+      className="btn btn-primary"
+      onClick={() => onSelect(language)}
+    >
+      {language.title}
     </button>
   );
 }

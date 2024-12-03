@@ -3,6 +3,12 @@ import languages from "./data/languages";
 import Button from "./componensts/Button.jsx";
 
 function App() {
+  // lo stato che deve cambiare è il linguaggio
+  const [selectedLanguage, setSelectedLanguage] = useState(null);
+  // funzione per cambiare il linguaggio al click
+  const handleSelectLanguage = (language) => {
+    setSelectedLanguage(language);
+  };
   return (
     <>
       <header>
@@ -15,12 +21,23 @@ function App() {
           <div className="container">
             <div className="btn-container">
               {languages.map((language, index) => (
-                <Button key={index} title={language.title} />
+                <Button
+                  key={index}
+                  language={language}
+                  title={language.title}
+                  onSelect={handleSelectLanguage}
+                />
               ))}
             </div>
-            <div className="card-desctiption">
-              <h3 className="language-title"></h3>
-              <p className="language-desctiption"></p>
+            <div>
+              {selectedLanguage ? (
+                <>
+                  <h2>{selectedLanguage.title}</h2>
+                  <p>{selectedLanguage.description}</p>
+                </>
+              ) : (
+                <div>NESSUN LINGUAGGIO SELEZIONATO</div>
+              )}
             </div>
           </div>
         </section>
