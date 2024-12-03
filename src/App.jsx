@@ -1,11 +1,13 @@
+// IMPORT USE STATE FROM REACT
 import { useState } from "react";
+//IMPORT ARRAY
 import languages from "./data/languages";
+//IMPORT BUTTON COMPONENT
 import Button from "./componensts/Button.jsx";
 
 function App() {
-  // lo stato che deve cambiare è il linguaggio
   const [selectedLanguage, setSelectedLanguage] = useState(null);
-  // funzione per cambiare il linguaggio al click
+
   const handleSelectLanguage = (language) => {
     setSelectedLanguage(language);
   };
@@ -22,13 +24,14 @@ function App() {
             <div className="btn-container">
               {languages.map((language, index) => (
                 <Button
+                  //props del GENITORE
                   key={index}
                   language={language}
                   onSelect={handleSelectLanguage}
                 />
               ))}
             </div>
-            <div>
+            <div className="card-description">
               {selectedLanguage ? (
                 <>
                   <h2>{selectedLanguage.title}</h2>
